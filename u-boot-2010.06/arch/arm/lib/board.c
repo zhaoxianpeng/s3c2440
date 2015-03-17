@@ -349,34 +349,27 @@ void start_armboot (void)
 
 	/* initialize environment */
 	env_relocate ();
-printf("line:%d\n", __LINE__);
 #ifdef CONFIG_VFD
 	/* must do this after the framebuffer is allocated */
 	drv_vfd_init();
 #endif /* CONFIG_VFD */
 
-printf("line:%d\n", __LINE__);
 #ifdef CONFIG_SERIAL_MULTI
 	serial_initialize();
 #endif
-printf("line:%d\n", __LINE__);
 
 	/* IP Address */
 	gd->bd->bi_ip_addr = getenv_IPaddr ("ipaddr");
 
-printf("line:%d\n", __LINE__);
 	stdio_init ();	/* get the devices list going. */
 
-printf("line:%d\n", __LINE__);
 	jumptable_init ();
 
-printf("line:%d\n", __LINE__);
 #if defined(CONFIG_API)
 	/* Initialize API */
 	api_init ();
 #endif
 
-printf("line:%d\n", __LINE__);
 	//console_init_r ();	/* fully init console as a device */
 
 #if defined(CONFIG_ARCH_MISC_INIT)
