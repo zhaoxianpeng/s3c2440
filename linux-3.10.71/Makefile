@@ -326,7 +326,7 @@ include $(srctree)/scripts/Kbuild.include
 
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
-CC		= $(CROSS_COMPILE)gcc
+CC		= $(CROSS_COMPILE)gcc 
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -342,11 +342,11 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
-AFLAGS_MODULE   =
+CFLAGS_MODULE   = -mcpu=arm920t -march=armv4t
+AFLAGS_MODULE   = -mcpu=arm920t -march=armv4t
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	=
-AFLAGS_KERNEL	=
+CFLAGS_KERNEL	= -mcpu=arm920t -march=armv4t
+AFLAGS_KERNEL	= -mcpu=arm920t -march=armv4t
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
