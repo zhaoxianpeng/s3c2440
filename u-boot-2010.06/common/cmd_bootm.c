@@ -71,6 +71,7 @@ DECLARE_GLOBAL_DATA_PTR;
 extern void bz_internal_error(int);
 #endif
 
+#define debug(fmt,args...)	printf (fmt ,##args)
 #if defined(CONFIG_CMD_IMI)
 static int image_info (unsigned long addr);
 #endif

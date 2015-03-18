@@ -114,9 +114,9 @@ void show_regs (struct pt_regs *regs)
 
 	flags = condition_codes (regs);
 
-	printf ("pc : [<%08lx>]	   lr : [<%08lx>]\n"
+	printf ("pc : [<%08lx>]%08lx	   lr : [<%08lx>]\n"
 		"sp : %08lx  ip : %08lx	 fp : %08lx\n",
-		instruction_pointer (regs),
+		instruction_pointer (regs), *(unsigned long*)instruction_pointer (regs),
 		regs->ARM_lr, regs->ARM_sp, regs->ARM_ip, regs->ARM_fp);
 	printf ("r10: %08lx  r9 : %08lx	 r8 : %08lx\n",
 		regs->ARM_r10, regs->ARM_r9, regs->ARM_r8);
