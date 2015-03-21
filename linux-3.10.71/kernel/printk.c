@@ -1702,7 +1702,7 @@ asmlinkage int printk(const char *fmt, ...)
 #endif
 	va_end(args);
 #ifdef CONFIG_DEBUG_LL
-    printascii(buff);
+    //printascii(buff);
 #endif
 	return r;
 }
