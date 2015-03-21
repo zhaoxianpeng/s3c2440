@@ -246,28 +246,26 @@ static struct s3c24xx_mci_pdata mini2440_mmc_cfg __initdata = {
 /* NAND Flash on MINI2440 board */
 
 static struct mtd_partition mini2440_default_nand_part[] __initdata = {
-	[0] = {
-		.name	= "u-boot",
-		.size	= SZ_256K,
-		.offset	= 0,
-	},
-	[1] = {
-		.name	= "u-boot-env",
-		.size	= SZ_128K,
-		.offset	= SZ_256K,
-	},
-	[2] = {
-		.name	= "kernel",
-		/* 5 megabytes, for a kernel with no modules
-		 * or a uImage with a ramdisk attached */
-		.size	= 0x00500000,
-		.offset	= SZ_256K + SZ_128K,
-	},
-	[3] = {
-		.name	= "root",
-		.offset	= SZ_256K + SZ_128K + 0x00500000,
-		.size	= MTDPART_SIZ_FULL,
-	},
+    [0] = { 
+        .name   = "supervivi",
+        .size   = 0x00060000,
+        .offset = 0,
+    },  
+    [1] = { 
+        .name   = "Kernel",
+        .offset = 0x00060000,
+        .size   = 0x00200000,
+    },  
+    [2] = { 
+        .name   = "root",
+        .offset = 0x00260000,
+        .size   = 1024 * 1024 * 1024, //64U * 1024 * 1024 - 0x00260000,
+    },  
+    [3] = { 
+        .name   = "nand",
+        .offset = 0x00000000,
+        .size   = 1024 * 1024 * 1024, //64U * 1024 * 1024 - 0x00260000,
+    }   
 };
 
 static struct s3c2410_nand_set mini2440_nand_sets[] __initdata = {
