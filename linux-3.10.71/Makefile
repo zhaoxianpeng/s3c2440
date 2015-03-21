@@ -157,6 +157,7 @@ obj		:= $(objtree)
 VPATH		:= $(srctree)$(if $(KBUILD_EXTMOD),:$(KBUILD_EXTMOD))
 
 export srctree objtree VPATH
+export ARCH=arm
 
 
 # SUBARCH tells the usermode build what the underlying arch is.  That is set
