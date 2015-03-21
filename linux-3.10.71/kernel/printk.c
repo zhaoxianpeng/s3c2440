@@ -1682,6 +1682,10 @@ asmlinkage int printk(const char *fmt, ...)
 {
 	va_list args;
 	int r;
+#ifdef CONFIG_DEBUG_LL
+    extern void printascii(const char *);
+    char buff[256];
+#endif
 
 #ifdef CONFIG_KGDB_KDB
 	if (unlikely(kdb_trap_printk)) {
@@ -1693,8 +1697,13 @@ asmlinkage int printk(const char *fmt, ...)
 #endif
 	va_start(args, fmt);
 	r = vprintk_emit(0, -1, NULL, 0, fmt, args);
+#ifdef CONFIG_DEBUG_LL
+    vsprintf(buff, fmt, args);
+#endif
 	va_end(args);
-
+#ifdef CONFIG_DEBUG_LL
+    printascii(buff);
+#endif
 	return r;
 }
 EXPORT_SYMBOL(printk);
