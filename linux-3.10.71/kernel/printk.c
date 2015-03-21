@@ -1684,7 +1684,7 @@ asmlinkage int printk(const char *fmt, ...)
 	int r;
 #ifdef CONFIG_DEBUG_LL
     extern void printascii(const char *);
-    char buff[256];
+    char buff[1024];
 #endif
 
 #ifdef CONFIG_KGDB_KDB
