@@ -413,7 +413,7 @@ void main_loop (void)
 # ifdef CONFIG_AUTOBOOT_KEYED
 		int prev = disable_ctrlc(1);	/* disable Control C checking */
 # endif
-	boot_zImage(0x120000,0x400000);
+	boot_zImage(KERNEL_OFFSET,KERNEL_SIZE);
 # ifndef CONFIG_SYS_HUSH_PARSER
 		run_command (s, 0);
 # else

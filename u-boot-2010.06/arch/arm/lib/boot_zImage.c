@@ -153,7 +153,7 @@ int boot_zImage(ulong from, size_t size)
 }
 int do_boot_zImage (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 {
-	boot_zImage(0x120000,0x400000);
+	boot_zImage(KERNEL_OFFSET,KERNEL_SIZE);
 	return 0;
 }
 U_BOOT_CMD(

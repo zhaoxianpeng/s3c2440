@@ -109,7 +109,7 @@
 
 #define CONFIG_BOOTDELAY	3
 /*#define CONFIG_BOOTARGS	"root=ramfs devfs=mount console=ttySA0,9600" */
-#define CONFIG_BOOTARGS	"noinitrd root=/dev/mtdblock2 init=/linuxrc console=ttySAC0 mem=64M"
+#define CONFIG_BOOTARGS	"noinitrd root=/dev/mtdblock2 init=/linuxrc console=ttySAC0,115200 mem=64M"
 #define CONFIG_SETUP_MEMORY_TAGS	1
 #define CONFIG_INITRD_TAG	1
 #define CONFIG_CMDLINE_TAG	1
@@ -202,8 +202,10 @@
 
 //#define	CONFIG_ENV_IS_IN_FLASH	1
 #define CONFIG_ENV_IS_IN_NAND	1
-#define CONFIG_ENV_OFFSET	0X100000
+#define CONFIG_ENV_OFFSET	0X240000
 #define CONFIG_ENV_SIZE		0x20000	/* Total Size of Environment Sector */
+#define KERNEL_OFFSET       0x7660000
+#define KERNEL_SIZE       0xa00000
 
 /* NAND flash settings */
 #define CONFIG_CMD_NAND
@@ -219,10 +221,10 @@
 #define CONFIG_MTD_DEVICE	1
 #define CONFIG_MTD_PARTITIONS	1
 #define MTDIDS_DEFAULT	"nand0=nandflash0"
-#define MTDPARTS_DEFAULT	"mtdparts=nandflash0:1m@0(bios),"\
+#define MTDPARTS_DEFAULT	"mtdparts=nandflash0:2304k@0(uboot),"\
 				"128k(params),"\
-				"4m(kernel),"\
-				"-(root)"
+				"116m(root),"\
+				"-(kernel)"
 /* YAFFS */
 #define ENABLE_CMD_NAND_YAFFS	1
 #define ENABLE_CMD_NAND_YAFFS_SKIPFB	1
